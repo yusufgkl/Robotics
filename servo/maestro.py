@@ -14,7 +14,6 @@ class ServoController:
             angle = angle - 15
 
         if (angle >= 180):
-            print('IOYFDGIDF')
             angle = 150
         
         
@@ -53,16 +52,3 @@ class ServoController:
         chan  = servo &0x7f
         data = chr(0xaa) + chr(0x0c) + chr(0x07) + chr(chan) + chr(speed & 0x7f) + chr((speed >> 7) & 0x7f)
         self.sc.write(data)
-
-servo = ServoController()
-sleepTime = 2
-num = 3
-i = 0
-
-while (i != num):
-    servo.set_speed(i, 5)
-    servo.setAngle(i, 90)
-    i = i + 1
-
-print(servo.getErrors())
-servo.closeServo()
